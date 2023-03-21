@@ -1,12 +1,10 @@
 import json
 import streamlit as st
-# from yt_extractor import get_video_info, get_audio_url
-# from api_03 import save_transcript
-# from gtts import gTTS
 from pytube import extract
 from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_transcript_api.formatters import TextFormatter
 from textblob import TextBlob
+import time
 
 
 st.set_page_config(
@@ -18,8 +16,6 @@ url = st.text_input('Enter video url', '')
 if st.button('SUBMIT'):
     if 'youtube.com' not in url:
         st.write("Invalid url")
-    else:
-        st.write(f'({url}) is currently proccessing....')
 
 
 if __name__ == "__main__":
@@ -28,38 +24,15 @@ if __name__ == "__main__":
         transcript = YouTubeTranscriptApi.get_transcript(id)
         formatter = TextFormatter()
         text_format = formatter.format_transcript(transcript)
-        file = open('transcript.txt', w)
+        file = open('transcript.txt', "w")
         file.write(text_format)
         blob = TextBlob(text_format)
+        progress_bar = st.progress(0)
+        for i in range(100):
+            time.sleep(0.05)
+            progress_bar.progress(i+1)
+        progress_bar.empty()
         sentimental = blob.sentiment.polarity
-        st.write(sentimental)
+        perc = str(round(sentimental/1 * 100))+"%"
+        st.metric("sentimental value", str(sentimental), perc)
         print(sentimental)
-
-        # audio = gTTS(text=text_format, lang="en", slow=False)
-        # audio.save("transcript.wav")
-        # save_transcript("transcript.wav", "senti_file", sentiment_analysis=True)
-        # with open("data/iPhone_13.json", "r") as f:
-        #     data = json.load(f)
-        # positives = []
-        # negatives = []
-        # neutrals = []
-        # for result in data:
-        #     text = result["text"]
-        #     if result["sentiment"] == "POSITIVE":
-        #         positives.append(text)
-        #     elif result["sentiment"] == "NEGATIVE":
-        #         negatives.append(text)
-        #     else:
-        #         neutrals.append(text)
-
-        # n_pos = len(positives)
-        # n_neg  = len(negatives)
-        # n_neut = len(neutrals)
-
-        # print("Num positives:", n_pos)
-        # print("Num negatives:", n_neg)
-        # print("Num neutrals:", n_neut)
-
-        # # ignore neutrals here
-        # r = n_pos / (n_pos + n_neg)
-        # print(f"Positive ratio: {r:.3f}")

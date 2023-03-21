@@ -1,3123 +1,388 @@
-this video is sponsored by hostinger if
-you're looking for a reliable and
-affordable web host hostinger has
-everything from shared hosting to vps's
-to cloud hosting and more their most
-popular shared plan includes 100
-gigabytes of ssd storage
-free email hosting an ssl certificate
-git and ssh access and much more
-perfect for our portfolio or small
-business website you can choose to pay
-monthly or you can pay up to four years
-in advance
-click the link in the description below
-and enter the code traversie media to
-get 10
-off today hey what's going on guys
-welcome to my angular crash course
-so like with my react and view crash
-courses
-this will be project based and we'll be
-building the same exact task tracker
-application that we we built with
-react and view if you watched any of
-those we're going to
-go through a couple slides and talk a
-little bit about what angular is what it
-offers
-and then we'll jump right into the
-coding if you want to skip the slides
-and get right into the tutorial feel
-free to do that
-so what is angular the definition on the
-website is it's an application design
-framework and development platform for
-creating efficient
-and sophisticated single page apps so
-basically it's a front-end javascript
-framework
-and like with react and vue it typically
-runs on the client
-but it's often used with some kind of
-back-end api to create a powerful
-full stack application and you can have
-anything you want running on the back
-end the mean stack is pretty popular
-which is stands for mongodb which is the
-database
-express which is a backend framework
-angular which is a front-end framework
-and then node.js which is a javascript
-runtime
-but your back-end could be absolutely
-anything it could be python django
-c-sharp.net whatever you want to use now
-i should mention that there is an older
-legacy angularjs framework or angular 1.
-we're not talking about that angular 2
-was completely rewritten
-and is very different than angular 1 or
-angularjs
-right now the latest version is 11.
-that's what we'll be using
-in this video but it's basically just an
-updated version of angular 2.
-okay so 2 through 11 are the same
-framework and then one
-or angularjs is a completely separate
-framework
-so why would you want to use angular
-what are the advantages
-so you can create dynamic front-end apps
-and user interfaces and use it with
-full stack applications that's true for
-just about any front-end framework
-however angular is much more
-full-featured than something like
-reactor view
-not that that makes it any better but it
-does include more
-with the the core framework such as
-routing
-and http clients services with
-dependency injection and more
-since it is more full featured it is
-larger than other frameworks and it does
-have a steeper learning curve if you ask
-me
-what the most difficult framework to
-learn is out of
-angular react and view i would
-definitely say angular
-it does use typescript by default which
-is a superset of javascript that
-includes static typing
-now you don't have to use typescript
-it's it's pretty much
-optional the files do have to be dot ts
-and not dot js
-but you don't have to add types to your
-your properties and all that
-we will be using some basic typing in
-this course but you definitely don't
-have to
-know typescript to start working with
-angular
-angular also uses the rxjs library which
-allows us to use something called
-observables and observables allow us to
-write really efficient asynchronous
-programming and i'll explain more about
-that later
-angular is also very test friendly the
-cli tool gives you everything you need
-to write unit tests and
-end-to-end tests as far as popularity
-overall i don't think it's as popular as
-something like react
-however angular is used a lot in the
-in the large enterprise business world
-it's used for
-larger applications as it's more strict
-and standardized and react
-as far as what you need to know before
-learning angular it's pretty much the
-same as with any other
-framework what i would suggest you learn
-before react or view or whatever
-basically just the fundamentals of
-javascript
-modern javascript like asynchronous
-programming with promises
-array methods like for each map filter
-the fetch api
-making http requests npm the node
-package manager so
-if you know that stuff i think that you
-can move on to learn
-any framework now angular like
-every other front-end framework is
-component driven so it uses
-ui components and components include the
-template which is basically like the
-html the output
-the logic which is the javascript or
-typescript
-and then the styling and components are
-completely reusable they can be embedded
-into the template
-within an xml like syntax or xml like
-tag and then this is kind of how a
-component is
-structured this is from the
-documentation basically we have a
-declaration here of component with a
-selector
-this selector is what you'll use to
-to embed the component so basically you
-would put this into a tag
-and then you have your template url
-which is going to be your html
-and you have any providers so any
-services that you want to
-use in this particular component and
-components are class-based as well
-and you have a life cycle method or life
-cycle methods i should say
-that you can use as well and we'll get
-into into that as we move along
-so this is an example of what we're
-going to be building this is the task
-tracker application
-and on the right i've just outlined all
-the ui components that we'll be creating
-so we have the header this part here
-that'll be the header component then we
-have the the close button or the open
-and close button which will toggle this
-right here
-the the form this is going to be a
-separate component as well
-okay and it's going to be a button
-component that can be reusable
-then we have our add task component here
-which is this form
-we have our tasks component which is all
-of the tasks and then each individual
-task is also its own component
-and then we have the footer down below
-and we will be using the router angular
-does have a router included
-but we'll be adding that at the end to
-have a route to the about page and back
-to the home page
-so angular also has the concept of
-services services are distinguished from
-components and they increase modularity
-and
-reusability breaking your code up into
-services will
-clean up your components and have them
-really lean
-rather than putting all the
-functionality into your components
-and services are usually built to deal
-with one task or one
-aspect of the application such as data
-fetching input validation and so on
-and obviously we'll you know we're going
-to create our own service and look more
-into this later
-so angular does have a cli or command
-line interface that we're going to use
-to set up our application
-and it also allows us to run a local
-dev server and it also allows us to
-build out our static assets
-for production so we can install it with
-npm or yarn
-and then we can just generate a new app
-with ng
-new and then whatever the app name and
-then when you're ready to build you can
-run ng
-build that'll create a dist folder and
-then you can upload that to your
-host and there's also commands that we
-can use to generate components and
-services so we don't actually have to
-create the files and add the boilerplate
-the commands will do that for us all
-right so
-enough with the slides let's go ahead
-and jump in and let's start to learn
-angular
-okay so this is angular dot io this is
-the main website
-where you can find the documentation um
-there's actually a tutorial here if you
-go down here this tour of heroes
-and this this does a lot of what we're
-going to be doing it doesn't do as much
-but you can kind of use this as a
-supplement if you want along with this
-course
-now if we go over here to get started
-local setup
-it'll show us how to install the angular
-cli
-using npm you can also use yarn and then
-how to create an
-application so let's open up a terminal
-and to install you'll just do
-npm install dash g for global and then
-at
-angular slash cli okay i already have it
-installed so i'm not going to run that
-but that's what you would run to install
-it globally
-and then you should be able to do ng new
-and then whatever you want to call your
-app i'm going to call it angular dash
-crash okay so it's going to ask us if we
-want to instrict
-instrict enforce stricter type checking
-and stricter bundle budgets
-i'm just going to say no for this and
-then if we want to add in the router
-which normally i would say yes but i'm
-going to skip the router until the end
-and i'll show you how to set it up
-manually at the end which isn't
-difficult so i'm just going to say no
-for now
-and then i'm going to use just regular
-css
-and that will set up all of our packages
-and all of our files and folders
-all right so we're all set up so i'm
-going to cd into the directory that we
-just created
-and then from here i'm going to run code
-dot to open up visual studio code and of
-course you don't have to use visual
-studio code you can use whatever text
-editor you want
-and then just open up the folder in your
-in your text editor
-so here you'll see we have a bunch of
-files and folders but before we even
-look into that i'm going to open up my
-integrated terminal
-and i'm going to run the dev server and
-you can run it from here or you can run
-it from your regular terminal
-but that's going to be ng serve
-okay and that should open it up on
-localhost port 4200.
-so i'm going to go to my browser now and
-just go to localhost
-and let's go to 4200
-and that should open up the landing page
-which looks like this and
-this is actually a pretty helpful
-landing page it shows you how to
-generate a new component you would run
-ng generate component we're going to do
-that later if you wanted to use angular
-material which is a ui library it shows
-you how to do that how to add pwa
-support
-add a dependency run and watch tests and
-then build for production would be
-ng build okay so this is the just the
-landing page
-and i'm just going to make this a little
-smaller i'm going to keep this full size
-for now just because i want to
-keep the sidebar open because with
-angular you have a lot of files when you
-have a component you're going to have
-four different files for that component
-so i want you to be able to see
-you know what i have open and what's
-available
-so let's take a look at some of this the
-package.json
-you'll see is actually pretty large
-compared to
-like react or view so as far as
-dependencies
-angular has a bunch of different parts
-there's the core
-there's forms the router the compiler
-there's some animation
-so a bunch of different parts to angular
-rxjs which is the library that gives us
-observables
-and then dev dependencies of course we
-have typescript we have tslin
-we have some some testing tools like
-karma and jasmine so it can be a little
-overwhelming but you don't really need
-to know
-you know what everything does here just
-to get started
-and then for scripts of course ng serve
-or npm start we just ran that
-that runs the dev server ng build will
-build out our static assets when we're
-ready to deploy
-testing linting end-to-end testing
-so quite a bit in the package.json
-you also have your ts config which i'm
-not really going to get into but this is
-your your typescript config if you need
-to change anything there
-we have an angular.json which is kind of
-a just an overall
-config file where we can change like the
-output path
-so if you don't want it to go to a
-folder called dist maybe
-maybe you're building a full stack app
-and you want it to go into the public
-folder you can change it here
-if you have assets or styles or scripts
-you can add those in here as well
-including cdns and those will get loaded
-automatically
-alright so that's the config now the
-source folder
-is and then this app folder inside the
-source is our main
-application this is where all of your
-components go all of your
-all of your services whatever you create
-is going to go in here most likely
-but before we get into that let's just
-take a look down here just
-directly in the source folder there's an
-index html
-and this is basically the single page
-that's loaded
-right and there's not much here because
-everything gets loaded
-into this element this app dash root so
-this is the root app component
-and it works similar to react view any
-any front-end client-side framework
-it's not it's not generating the actual
-html page or anything like that
-everything is generated with the
-javascript bundle and
-there's not really much you're going to
-do here we can change the title like we
-can change this to
-task tracker
-and save and then that will
-automatically get reloaded and you can
-see the title has changed
-now as far as the javascript the main.ts
-and notice that all the javascript it's
-all typescript so it's all ts extensions
-even if you don't use typescript at all
-you just want to use ts
-use that extension now this is like the
-entry point to angular
-what this does is it imports the app
-module so angular has a concept of
-modules
-and there's some modules we're going to
-be using like the forms module the http
-module
-you can also create your own modules
-which is beyond the scope of this course
-but the app module is like the main one
-and that's what's getting bootstrapped
-so right here you can see bootstrap
-module and
-app modules getting passed in there so
-that app module is actually this file
-right here it's in the app folder
-and it's app.module.ts and
-this ng module you'll see is brought in
-from angular core and in here we have
-declarations imports providers and
-bootstrap
-so basically when you create a component
-you'll see right now we just have the
-app component which is like our root the
-root component
-that's being put in declarations when we
-use the cli to generate components it'll
-do this automatically
-it'll import it and provide it in here
-so we don't have to actually manually do
-that
-imports whenever you use a module such
-as the browser module which is used to
-interact with the dom you would put in
-here like when we use the forms module
-http that's going to go in here
-providers any global services that you
-have global providers
-and then whatever your bootstrapping
-which in our case of course is the root
-app component
-all right so that's the app.module file
-excuse me now you'll notice there's a
-lot of these app.component files and
-that's because
-when you create a component you're
-generally going to have four files
-you're going to have the typescript file
-which is your main class with any
-properties
-and methods and all that also specifies
-some things like your template and
-stylesheet
-then you have your template which is
-your html file which this is just a just
-a bunch of crap thrown in that's
-everything we're seeing right here which
-we're going to get rid of in a second
-you have your css files you've you can
-have specific css files for components
-then you have your spec file for testing
-which we're not going to deal with in
-this course
-all right so let's uh let's actually
-clear up
-everything in this app component html so
-we'll just select everything get rid of
-it we'll put an h1 we'll just say hello
-world and i guess i'll make this a
-little smaller
-and now all that stuff is cleared up and
-we just see our h1
-okay now as far as this typescript file
-we are importing components so this is
-basically the structure for every
-component you bring in a
-component from core and then you have
-what's called a declaration
-component declaration with three three
-items in here and this object the
-selector
-now the selector is whatever the tag the
-html tag i guess you could call it
-that you're going to use to embed your
-component now since this is the root
-component this is being embedded here
-in index html all the components we
-create will be embedding into the app
-component html
-okay whoops so that's the selector
-the template url is just the html file
-that you're using
-in our case for this component is right
-here and then the style urls you can
-actually have more than one but here we
-have
-just app component css okay so those are
-the three things
-declared in this component declaration
-then you have your classes which is
-where you put any properties
-of the component in this case there's a
-title
-and then any methods okay custom methods
-there's also life cycle methods
-uh it's kind of like uh react
-class-based components
-so here we have a title just called
-angular crash now this is this isn't
-using typescript by default but
-i would highly recommend that you add
-types to your properties and your
-functions
-so this is a string so we want to define
-it as a string if i put
-number i'm going to get an error here
-and if even if i save it even though i
-haven't even used this
-in the you know in the template it's
-still going to give me an error
-it says type string is not assignable to
-type number so you want to make sure you
-have the correct type
-okay so we'll set that back now if we
-want to display this text in our
-template
-we could simply in here in the h1
-use our double curly braces so we're
-using something called string
-interpolation
-and show the title and we see angular
-crash
-okay which i'm actually going to change
-that to task
-tracker and of course it's going to auto
-reload we don't have to
-manually reload it all right now we can
-do other things in here
-in these curly braces like let's say we
-could basically do any javascript
-expression so i could say like one plus
-five
-and even though these are numbers and
-we're doing math it's going to interpret
-it to a string and output six
-i could add on to this i could say like
-two uppercase which is just a javascript
-method
-and that will work as well i could put a
-ternary in here
-pretty much any javascript expression
-okay and we'll
-we'll get more into that a little later
-now as far as styling goes
-uh we have this style css here for any
-global styling which i do
-have some so i'm going to just grab that
-real quick and you can
-you can copy this from the repository
-link in the description
-but i'll just go over real quick we're
-using the pop-ins font we have a reset
-we have
-a container that we're going to wrap
-around everything
-some btn some button classes some form
-classes
-and that's pretty much it we're going to
-have some specific component classes
-like our header will have some specific
-styles and
-our footer so let's save this and we
-should see
-a difference here with the font and the
-margin and so on
-just going to close that up that's our
-global styling
-and next thing let's add
-let's create a new component so remember
-we have our header we're going to have a
-button component
-our tasks our footer so let's create the
-header first so i'm going to open
-up or make my terminal a little bigger
-here
-and i want my server to keep running so
-i'm going to just open up a new terminal
-while that's running and we're going to
-use the cli and say
-ng generate component
-and we want a header component but i
-want it to be in a folder called
-components so i'm going to say
-components
-header like that okay so if we go ahead
-and run that
-it's going to create a bunch of files
-for us in components
-there's a folder called header and it
-has our four main
-files just like the root app component
-it has the
-ts which is the declaration and the
-class the html the css and the spec file
-for testing
-now there's a couple extra things here
-there's a constructor that's included
-a constructor runs whenever an object is
-initialized or in this case whenever our
-component
-is initialized but there's also this ng
-on init which is a life cycle method and
-this is actually what you want to use
-most of the time when you're
-initializing some code so if you want it
-to run
-you know when the component loads you
-would put it in here
-all right so like if you wanted to make
-an http request or something like that
-now as far as the html whenever you
-generate a component like we just did
-it's just going to be a paragraph that
-says whatever the name is
-and then works so let's embed this into
-our main
-app component so our app component html
-i'm going to get rid of this h1
-and we can simply use the selector which
-if we look at our
-header component ts file the selector is
-going to always be
-app dash and then whatever the name so
-in this case app dash header
-so we can just say app dash header
-and we don't need to import it or
-anything like that if you're coming from
-react
-it's just going to work and now you'll
-see header work so a header is being
-displayed
-now i also just want to wrap everything
-in a div with the class of container
-uh container and then let's move this
-up in here and that will just add the
-container around it that's coming from
-our global styling
-all right so we can close up app
-component html
-and in our app component ts the title
-here i'm actually going to cut that and
-i'm going to put that into the header
-instead of
-the app component so in the header let's
-go right above the constructor and let's
-just
-paste that in here and then inside the
-header html
-get rid of that and we'll put a header
-tag with an h1
-and then we'll have our title and of
-course your title doesn't have to be a
-property in your class
-but why not so now it just says task
-tracker
-all right now i do have some specific
-styles for the header so i would go into
-my
-um my header css file here
-and i'm just going to style the header
-tag
-and let's just display flex because we
-are going to have a button i want that
-to go on the side
-and then let's say justify content space
-i want to do space between so that'll
-push the button
-over to the right and then let's align
-items
-and set that to center and margin
-bottom we'll set that to 20 pixels
-all right so it's not going to look much
-different yet but now i want to add a
-button
-so if you remember we're going to have a
-button that says uh add
-and when we click that it'll toggle the
-the add form which we're going to do
-much later but i do want to just
-i want the button to be a separate
-component in case we want to use that
-button component somewhere else
-and just to give you an example of how
-to
-pass in data to a component and so on so
-let's go down here and let's generate
-components slash button
-and that should create in components a
-folder called button with those
-same four files and every component you
-create is basically going to look like
-this
-okay just the class with the constructor
-and the ng on init
-now as far as what i want to display
-here actually let's embed it first we're
-going to embed it into the header
-and i know there's going to be a lot of
-files we're working with because it just
-creates
-so many so that's why i'm you know i'm
-keeping the sidebar open and i have this
-open kind of wide so you can see all the
-different files i'm using
-so i want to embed this in here i don't
-have to import it or anything i just
-need to use the selector which is going
-to be
-app button if i save
-that now we see button works because
-that's what we have
-in the button html okay so let's go to
-our
-button html and let's get rid of this
-and let's add
-just an html button and
-for now we'll just say click
-like that and yeah we'll just do that
-for now
-and then i want to add a class
-of btn which we have in our global
-classes so it'll look like that
-but i want to be able to pass in so if
-we go back to where we have the
-component
-i want to be able to pass in a color and
-i want to be able to pass in
-the text for the button because if we
-want to reuse this
-we're not going to want the same text
-and we might want a different color
-so to do that we can let's see
-let's i guess we'll start here so we'll
-pass in let's say
-color and let's set let's pass in just
-a static color of green and then the
-text
-for text will say add all right so it's
-like passing in
-props if you're coming from react now
-the way that we grab onto these is we go
-into the button
-class and actually we're going to bring
-in from angular core we're going to
-bring in something called input because
-this is this is component input
-and we just want to declare down here
-say at input
-and actually we need parentheses and
-then
-whatever we want to call it so we have
-text coming in which is a string so i'm
-going to
-type that to a string and then we also
-have
-a color okay so we just want to add
-those and then we can accept those as
-input and then let's go into our button
-html
-and for the text that's easy we're just
-going to put that here we can do that
-with our curly braces
-so if we say text and i save now you can
-see the text says add
-all right if i were to go back to my
-header and change the text to
-hello and save then that will change the
-text and this is reusable i could use
-this anywhere
-now for the color that's that's a color
-that we need to add as a background
-color
-for css so if you want to use inline
-styling
-you can actually use a directive called
-ng style so directives
-are usually going to be curly braces and
-then we're going to use the ng style
-directive and we can set that
-and we can set our own css in here now
-this is going to take some quotes around
-it and then whatever the css
-style is which is going to be background
-color and then we want to set that to
-color okay color being the the data
-that's passed in
-so if i save that you'll see the button
-now changes to green
-and again i could change this to
-whatever red
-and that will change it now i just
-i want to get a little bit into events
-we're not going to obviously make this
-function just yet because we don't even
-have the the add component we don't have
-the form to toggle but ultimately this
-will toggle a form
-but to add an event let's see so on this
-button here let's go
-we'll go right after the class here and
-to add an event you just add in
-parentheses
-and then whatever the event which is
-going to be a click
-and then we're going to set that to a
-method called on
-click okay so it's as simple as that now
-it's going to give us an error because
-onclick does not exist now where we put
-this is going to be
-in the class okay so we have our class
-here i'm going to go
-down at the bottom and say on click
-and for now let's just say console.log
-we'll just say console.log add alright
-so if we go over here and open up our
-console and i click this
-we should see ad so we have that click
-event going to this method
-now obviously we're not going to want to
-put the functionality
-in here like the toggle or whatever
-because this button i want it to be
-reusable
-and every button has a different purpose
-so it's going to do something different
-on click so what we're going to do is
-we're going to bring in an event emitter
-and output the click or output the event
-so we can do this by bringing in output
-okay just like we took input into the
-button we're now outputting an event
-emitter
-so let's go right here and let's say
-output and i'm going to call this btn
-click that's going to be the name of the
-event that we're emitting and we want to
-set that equal to a new
-event emitter which we also have to
-bring in up here
-event emitter and we're going to set
-that to a new
-event emitter and just add our
-parentheses
-all here so output actually i forgot my
-parentheses here as well
-and then here instead of a console log
-what we'll do is this
-dot and call btnclick because that's
-what we called it and then we want to
-just call emit
-like that okay now it's not going to do
-anything
-because it's it's just emitting
-now in the header where the app button
-is actually embedded we want to go
-here and whatever we called that
-event we're emitting we're going to add
-in parentheses so
-essentially we're just firing off a
-custom event instead of click we now
-have button click which we defined
-and then set it to whatever we want to
-happen so if you were to
-add a button somewhere else you would
-just put whatever function you want to
-run
-in this case it's going to be toggle
-we'll call it toggle add
-task because that's what it's doing is
-it's going to toggle the add task
-component
-okay like that and then we can define
-this
-in our header so let's go to our header
-component
-and let's go down here and let's say
-toggle
-add task
-and for now we'll just console.log here
-and say
-toggle okay so if i click this
-now you're going to see toggle because
-it's emitting from the button
-it's emitting this button click which we
-have set up here as output as an event
-emitter remitting it we're basically
-you know catching it here and then
-firing off toggle add task which is then
-getting
-fired off in the header okay now that's
-all i'm going to do as far as this this
-button for now i just wanted to make it
-so we it could be reusable
-and we could embed where is it we could
-embed this anywhere with a custom
-color custom text and a custom function
-when it's clicked
-all right so we're going to leave this
-for now that we have our header and our
-button i'm going to close all these now
-we want to start to work on our tasks
-okay so basically we're going to have a
-task component we're going to have a
-task
-item for you know for each item and
-ultimately this is going to come from
-something called json server which is
-basically like a fake rest api that we
-can
-create and we can run locally but for
-now we're just going to put them
-into a file so let's go
-let's see inside our app folder not in
-the components but in
-app i'm going to create a file here and
-let's call this
-mock dash tasks
-dot ts and i'm just going to paste these
-tasks in so i'm just exporting
-an array called tasks and each one is
-just an object with an
-id a text value a day and then a
-reminder so if you want to set a
-reminder that'll be either true or false
-all right now since we're using angular
-with typescript
-we should probably create an interface
+i think we can all agree that streamlit
+is an amazing framework it is so
+flexible and you can build many
+different types of web apps with it so
+in this video i want to share with you
+my nine most favorite streamlet
+components number one for me is the
+columns component the reason that i like
+that one is i like using space a bit
+more efficiently and with columns you
+can put things side by side rather than
+one after another on the screen yes one
+nice thing about the columns component
+is that you can decide their relative
+sizes so if you just want to have two
+columns you can type two when you're
+calling to
+when you're calling the columns
+component and then it will create two
+columns of the same size but if you need
+them to be a little bit different than
+each other you can say the first one
+will have the size ratio of one the
+second one two and the last one one so
+what it will do is to create first
+column uh half the size as the middle
+column and the last column also half the
+size as a middle column and we will see
+how that looks in a second also so and
+it's very easy to assign it to some
+variables
+so this is the first thing that i really
+enjoy when i'm using streamlit of course
+we will not see anything if we run this
+application right now it's just three
+columns so let me populate this with
+some of my other favorite components so
+that we can see how it looks the second
+one that i really enjoy is markdown and
+the reason i like using markdown is
+because i'm kind of used to
+writing a text in markdown format for
+example when i'm preparing some
+documentation on github uh that's why i
+kind of like creating
+headlines or lists etc when i in my
+application so
+it's very easy again you can call
+streamlightmarkdown
+and if you want to have a heading you
+can just type it with
+one hashtag or
+i don't really know what else it's
+called
+let's say
+you know we can say welcome to my
+to my app and i can change that later
+if
+i want to have more in there
+i can also say
+here is some info
+on the app
+all right so let me put this actually in
+the column
+first column so that we can see what
+that looks like
+yeah so as you can see this is my first
+column here will be my second column and
+the last column will also be as big as
+the first column next one i really like
+is a file uploader and the reason that i
+like this one is because sometimes you
+really need to communicate with the user
+and it is not enough to only have um you
+know some text input or some other types
+of input but you need something a bit
+more sophisticated and when you have
+people upload a file it can be anything
+for example if you're doing a data
+science project they can even upload a
+whole new data set so that's why i
+really like the file uploader component
+of streamlit
+let me put this in the second column
+in this one i will ask people to
+um do a photo upload
+upload a photo
+and you can easily also save it into a
+variable when a photo or a file is
+uploaded so i will just say
+uploaded photo for this one
+and let's see how that looks yeah as you
+can see you know we need a bit more
+space for this one that's why i made the
+column a little bit bigger but if you
+want to upload something you just say
+browse files and then automatically
+upload it next thing that i really like
+again i will put it in the second column
+is the camera input so instead of
+writing a text or uploading a photo you
+can also automatically grab photos from
+the webcam that you have which is in my
+opinion really useful sometimes
+especially if you are making a project a
+web app that has something to do with
+computer vision that could be a very fun
+application it could be a very fun way
+of making your web app a bit more
+interactive
+and again we need to tell people what to
+do you can say take a photo
+and again you can save the photo that is
+taken
+into a variable so i'll just call this
+camera photo
+let's see what that looks like
+of course you need to then give
+permission for the streaming application
+to access your camera and hey that's me
+hello
+and you can take a photo and then it
+will just show your photo here and then
+the photo will be saved into this
+variable that you defined next thing
+that i really like is when you have
+someone do something on your app if it's
+an interactive application then it is
+very nice to show them some feedback if
+something failed or not and stream it
+already has built-in components or boxes
 for
-a task so basically like a model what
-fields should it contain
-so what we'll do is inside the app
-folder let's create a new file called
-task
-so uppercase t task singular and then
-dot ts and from here we're going to
-create
-an interface which is very similar to a
-class
-but we want to export this so we can
-bring it into other files
-so export interface task
-and we're just going to define what we
-want a task to include which we want an
-id
-which is going to be a number now the id
-i'm actually going to set
-to be optional so i'm going to put a
-question mark
-because when we create
-when we have our form and we add the
-task it's not going to initially have an
-id
-until we save it in json server so
-that's going to be optional
-so we don't get any error messages and
-then text
-is going to be a string
-day is going to be a string
-and reminder is going to be a boolean
-okay so now that we have this task
-interface we can go back to
-our mock tasks and let's go up here and
-let's import
-task from and it's in the same
-location so just dot slash task
-okay now we want to add this as a type
-just like you know you can do
-string or number you can have your
-interface
-and we want to do tasks now we do als
-since this is an array we
-also want to add our our brackets
-if this was just a single object that
-was a task we would just do that but
-since it's an array we want to do that
-and now if i were to add something onto
-this
-um like i don't know time
-and set that to 2 or something like that
-you'll see i'll get an
-error it says typo you can see what it
-says it's basically telling me
-that it doesn't match object literal may
-only specify
-known properties and time does not exist
-if i wanted time to exist i would just
-add it here to the interface
-okay and that's just typescript that's
-not really you know
-angular specific but now we have these
-mock tasks so let's close this up
-and we're going to want to create a new
-component
-for our tasks so let's go down here
-and clear this up and we'll generate
-a new component called tasks okay so you
-just want to do that
-and now we should have a task component
-with our four
-files and let's um
-let's just embed this into our app
-component html so right under the header
-we know that it's going to be called app
-tasks
-i save that we see tasks works
-all right so let's open up tasks and
-then the ts file let's also open up the
-html file
-all right so now we have our ts file
-now ultimately the tasks are going to
-come from our back end which is going to
-be our json server
-our fake back end and that will come
-later for now we're just going to bring
-them in from that file
-so let's go right here and let's import
-tasks i used all uppercase
-and we want to bring that in from let's
-say we want to go up one level or up two
-levels
-and then what do we call it
-mock tasks okay we want to bring that in
-let's also bring our interface in
-because whenever we define
-a task we want to use that so i'm going
-to import task
-from and that's going to be up
-two levels and then task okay
-now these tasks i want to assign as a
-property of our component
-so down here let's say
-tasks which has the type of task
-and it's going to be an array so we want
-to make sure we add the brackets
-and we're just going to directly set it
-to tasks
-okay so now those that will be set and
-we can use this
-in our component all right so if we go
-to our html now
-we should be able to basically loop over
-that array and then output whatever we
-want for each particular one
-now i'm going to have a specific
-component like i could put a div
-here i could even do this real quick
-just to show you how we would loop over
-there's a directive called ng4 so we
-would do
-asterisk ng 4 and set that to let's say
-let task of
-tasks now it knows what tasks is that's
-defined in our component that's being
-brought in from
-the the mock file and inside
-here we could should be able to
-put like so like
-task dot text all right so if i save
-that
-and we take a look you're gonna see all
-the text for each of the three tasks
-that are in that file all right now
-like i said i want to have a specific
-component for a task item i don't
-want to just put it in a paragraph so
-i'm going to once again generate a new
-component
-so let's do task dash item
-okay so we'll generate that
-and if we look in task item
-actually you know what let's do it here
-first and then we'll go ahead and
-configure
-task item so it's going to look like
-this instead of a paragraph it'll be
-app dash task dash
-item and same thing we're going to just
-loop over it for our tasks and then we
-want to pass in
-a property of task which is going to be
-equal to
-that individual task for that specific
-iteration
-okay and yeah that's all we want to do
-for now
-we don't want to put this ta this text
-though in here we don't want to put
-anything in here
-so basically we're just looping over the
-tasks and passing in a a prop
-of task that's going to be whatever that
-specific iteration
-okay so this is since we have three
-tasks there'll be three of these
-components
-all right so now let's go into our task
-item
-component ts and
-we're going to want to declare that task
-that's being passed in as
-an input just like we did for the button
-for the color and the text right so
-up here let's bring in input and let's
-go down
-here and let's add at
-input and this is going to be task
-and the type is going to be task which
-is our interface so we also want to
-bring that
-in so let's import task
-from and where are we at we want to go
-up what two levels and then
-task all right so now we should have
-access to each individual task
-in this component so i'm going to save
-this and now let's go to our html for
-the task item
-which is what this it just says task
-item works so we're just seeing that
-three times obviously
-you know that isn't what we want so
-let's get rid of this
-and let's do a div with the class of
-task
-and inside this div we're going to have
-an h3
-and that's going to be the text so we
-have access to tasks now
-into all the properties or all the
-values
-and then let's go under it and put a
-paragraph and this will be
-the task.day
-let's save that okay now this doesn't
-look very good i do have some css
-that i want to add and we can add that
-in the
-right in the task item component css
-so let me just grab that real quick okay
-so just that task class
-save that and there we go that looks a
-little better
-all right so we can close up the css
-file now
-since we're listing these out i do want
-to have a delete
-icon on the right here and
-i'm going to be using font awesome now
-we could just kind of you know include
-the cdn
-but i'm going to use a package called
-angular font awesome
-i think that's what it's called angular
-font
-awesome
-i think this is it right here
-yeah so we can install this
-let's see we can use npm or yarn but we
-should also be able to use
-ng add since we're using angular 11
-ng add is supported it started being
-supported in version nine
-so let's uh
-yeah let's grab this
-we don't need to specify the version
-it'll give us the latest
-and then let's go down here
-and i'm going to clear this up paste
-that in so it's ng add
-fort awesome slash angular font awesome
-okay so i'm going to choose free solid
-icons free regular icons and free
-brands icons
-okay so that will install the packages
-that we need
-if you use yarn or npm you do have to
-install all the packages separately
-and then to implement this this is an
-example of a module
-okay so we need to bring this font
-awesome module into our app.module
-and then add it to imports right so that
-yeah so that's done installing
-if we look at the package.json it should
-have installed
-let's see yep so you can see it
-installed all these packages for us that
-we need
-all right now let's go to
-our app.module.ts
-and i should have showed you this
-earlier but every component that we
-installed you can see it imported
-and then it added to the declarations oh
-it even did the font awesome module i
-didn't know it did that one
-automatically but yeah see all this
-stuff was
-was done for us because we use the cli
-and even the font awesome module was so
-we should be good to use it
-this is done so the way that we use it
-is we can import a specific font like
-this
-and then we can add it as a property so
-i'm going to grab this
-and let's go to our task item ts
-and we'll paste this in um now i don't
-want the
-coffee icon i want fa times which is an
-x
-so i'm going to bring in f8 times and
-you'll get a drop down here if you just
-do fa
-it'll show you like all the different
-options here for icons
-but we want times and then just like the
-documentation showed us we'll just set
-that
-as a prop here so we'll say f a times
-equals f a times and then we should be
-able to use that in our html so let's go
-back there
-and the way we use it is with a fa-icon
-tag so we're going to go in
-in the h3 so right after the text
-we're going to do fa dash icon
-like that and we want to add to this
-we want to bind to the icon
-set that to whatever the prop is
-which is fa times
-so let's save that let's see what that
-does
-okay so that worked now i do want it to
-be red
-so what i'll do is i'll add an ng style
-just like we did with the button
-so let's say ng style and we'll set that
-to
-let's say color and we'll set that
-to red
-uh oh i forgot my
-double quotes
-all right good now i want to start to
-look at services we know how to create
-components we know how to add properties
-we know how to add an event use
-directives like ng style
-so instead of bringing in so in our task
-component we're just bringing in mock
-tasks directly into the component
-and we're setting it as the property
-here so
-ultimately this will be coming from our
-back end which would be our json server
-but for now let's at least create the
-service and bring these mock tasks into
-the service and then
-call the service function from here
-okay so let's kind of minimize
-some of this stuff here i'm going to
-close up everything except for this file
-and to create a service we can actually
-use the cli
-so let's say ng
-generate we want to generate a service
-and let's put this in a folder called
-services
-and this is going to be our task
-service so let's go ahead and run that
-and now we should have so in addition to
-components folder we have a services
-folder
-and then we have our task service ts
-now our service is just a class and it
-does bring in this
-injectable and then it has this
-injectable declaration
-and it's being provided into the the
-application level
-now what i want to do is take the let's
-see
-i'm going to grab both of these imports
-i'm going to copy them and we don't need
-to import tasks into
-here anymore we are going to keep the
-the interface
-and then let's go to our service
-and let's paste these uh
-let's see so it's going to be one level
-now though
-because we're just in the services
-folder so we're going up into
-the app folder and let's um
-let's create a method down here
-called get tasks
-and for now it's just going to return
-tasks as far as the type for this
-so this function
-it's going to be the task array so we
-can just do that
-and it's basically doing it the same way
-we did it in the component
-except we want to call this get tasks
-from our component
-instead of bringing it directly in and
-like i said ultimately it's going to
-come from our back end
-so now let's go back here
-and instead of setting this to task
-it's just going to be an empty array to
-begin with
-and we want to be able to call our
-service method but in order to do that
-we first have to bring the service in so
-i'm going to go up here and let's import
-and let's say task service
-that's the name of the class we're
-bringing that in from
-and then we're going to go up two levels
-into services and then task service
-now in order to use a service you have
-to add it as a provider into the
-constructor
-okay so it as a constructor argument
-here
-so we're going to say private so we're
-only going to use it from here
-and then we'll call it task service
-lowercase
-and define that as task service that we
-brought in which is uppercase
-so now we should be able to say this dot
-task
-service dot and then anything we have in
-here such as get tasks
-where we want to call this is in the ng
-on init because that fires off right
-away
-all right and by the way when this void
-here just means that this this
-particular function doesn't return
-anything
-so in here we should now be able to call
-this dot
-task service dot get tasks
-and i guess yeah for now we're not
-dealing with observables yet so we could
-just set this dot tasks
-which is just an empty array that we set
-above as a property and then we'll set
-it to
-whatever this gives us back
-and if i save that we shouldn't see any
-difference
-now usually this isn't how you're going
-to want to do it you're going to want to
-use observables because you're usually
-dealing with
-asynchronous data if you're fetching
-from a server
-we're just bringing a file in and
-setting it to that so we can do it this
-way but i want to show you how we could
-make this an observable okay instead of
-just a task directly so we need to go up
-here and
-bring in let's say import
-and we're going to bring in and this is
-from the rxjs library so
-from rxjs and we're going to bring in
-observable and we're going to bring in
-something called of
-and then down here where we have our get
-tasks
-we're going to change this
-instead of just the task as the type
-it's going to be
-an observable but it's going to be a
-task
-observant task as an observable so we
-want to just surround that with angle
-brackets
-okay now we'll get an error here because
-this is an observable
-so what we can do if we want to just
-return an observable directly
-is let's uh let's create a variable
-called task and then this is where we
-use of
-and we'll just wrap this and that will
-basically turn it into an observable and
-then we can return
-tasks
-uh let's see it's missing the following
-properties from task length put
-oh yeah this is it's just telling us
-this because
-we're not we're not i'm using this as an
-observable we're just using this as
-whatever the return value setting it to
-that and that's not how you deal with an
-observable
-you subscribe to an observable so you
-can constantly watch it
-um so what we need to do is go back here
-and where we're just setting this dot
-task we don't want to do that anymore we
-just want to call
-get tasks which is observable i
-shouldn't say call it but we want to
-subscribe to it so we can say dot
-subscribe you can kind of think of this
-as like a
-as a promise right when you have a
-promise you do a dot
-then and then you have an arrow function
-this is kind of the same thing
-so in here we'll get the return value
-which is tasks and then we can do what
-we want with it we're going to set this
-dot tasks equal to the task so we get
-back from the observable
-so if i save that now we get the same
-thing okay you're not going to see any
-difference but
-the way that it's actually working
-behind the scenes is different
-all right so now we're going to make
-this a little more real world you're
-probably going to be working with some
-kind of back end
-some kind of api and you're going to be
-using the http client that comes with
-angular now the http
-client actually returns an observable
-automatically so we don't even have to
-do this you know this of here
-it'll return an observable and we handle
-it the same way this will be the same we
-subscribe to it
-now as far as our back end we're going
-to be using a little tool
-called json server
-and this is the same thing that i used
-in the react and the view
-crash courses so basically it's a it's a
-full fake rest api we don't have to
-write any coding it just gives us a
-local backend to work with
-you can't deploy this this is not made
-for production it's just made to give
-you
-a local server to work with and
-basically we create a db.json file
-and let's see yeah so we create a json
-file we can add
-different collections so these would be
-looked at as different collections we're
-just going to have
-tasks and then we'll go ahead and write
-run a script that'll run json server
-watch that file
-and we can make post we can make get
-post put
-patch and delete request and it'll
-actually add data delete data and so on
-i didn't want to use jsonplaceholder
-this is the same
-developer who created this right here
-jsonplaceholder
-this is awesome too but you can't
-actually
-like you can make post requests but you
-have to use these resources
-and if you make a post request it
-doesn't actually add the data
-obviously because you don't want he
-doesn't want public
-you know letting the public add data
-delete and all that
-so i want this to be to function more
-like a real life application and have
-have full crud functionality
-so the first thing we want to do is
-install json server so we're going to go
-down here and npm install
-json dash server and
-we don't want to inst i mean you can
-install it globally if you want but
-i'm not i'm just going to add a script
-to run it
-okay and let's go to our package.json
-okay and you should see that right here
-json server
-and then for a script let's call this
-server so this will run our back end by
-running
-json-server and we want to dash dash
-watch the file we call db.json that's
-essentially going to be that's
-essentially going to be our database
-and then it i think it runs on port 3000
-by default i'm going to change that so
-i'm going to do dash dash
-port i want it to run on 5000
-all right so we'll save that and
-now let's create this db.json
-so db.json is actually going to go in
-the root
-so make sure you put it in the root
-db.json
-okay and then as far as what we're gonna
-put in here let me just
-find that file real quick
-actually you know what i don't have one
-so we'll just have to type it out
-so like i said you can you can kind of
-have i think i said this but you can
-have collections
-like if you wanted more than just tasks
-you could do that you could set uh
-actually this needs to be in curly
-braces
-make sure you use double quotes because
-this is json but we could have a task
-array we could have like
-i don't know what else products like you
-can have different
-um collections but we're just having
-tasks and then let's take
-you know what we could do is grab that
-mock file
-and i'm just going to grab these three
-tasks
-copy that and then
-paste that in here now this isn't json
-we have to make sure we add
-double quotes
-let's select all the single quotes if
-you're using single quotes and just
-change those to double quotes and all
-the keys
-also have to have double quotes
-might have been quicker just to type it
-out but it's fine
-get rid of the trailing commas you can't
-have that in jason
-and let's just add the rest of the
-quotes here
-all right so that should be valid
-so that's our db json now since we have
-our db json
-uh created we should be able to now run
-the server so down here we can say
-npm run server because that's what i
-called it as a script
-and it's going to run on localhost 5000
-so it's we essentially have our own
-local api now and even if
-if we go to the browser here and i go to
-localhost 5000
-well this is going to show us the
-welcome page but if we go to
-slash and then whatever the collection
-in our case tasks
-there we go so it's serving that json
-and it's not like we can just get this
-we can also make
-post requests to add to it and update
-and delete and all that
-all right so we now essentially have a
-back end or at least a fake or mock back
-end
-and even if this was a real express back
-end or
-i don't know django or whatever you
-would do this stuff the same way
-so let's see now that we're going to be
-dealing with an api
-excuse me let's um let's include the
-http
-client
-and and this is it's just part of
-angular you know with reactorview you
-would use the fetch api
-or axios it doesn't have an http client
-included angular does
-i'm not saying that's better or worse
-but it just
-angular just has more with it which also
-makes it you know harder to learn and
-makes it
-bigger it's a bigger framework so we
-want to take this from
-what is it i think it's angular slash
-common
-slash h slash http and we're going to
-bring in
-from that the http client
-there's there's a lot to this we also
-want to bring in the headers so that we
-can create http
-headers
-okay so we'll bring that in now in order
-to use this we actually have to add this
-as a module
-so let's go to our app.let's see
-so many freaking files app.module.ts
-and we need to bring that in here so
-just like you know we're using the
-browser module the font awesome module
-which i'm just going to bring up here
-with the because i like to have all the
-modules up top and then we have all the
-components
-so let's go ahead and import
-and this is going to be from let's see
-it's going to be from the same things
-angular slash common
-slash http and
-we want to bring in from here the http
-client module okay make sure you
-client module not just http client and
-then we just need to add that down here
-in our imports remember these
-declarations are for components this is
-for modules
-so http client
-module will get added there and that
-should do it so we can save this and now
-we should be able to use it
-so let's go back to our service
-and what i'm going to do is add a
-property for the url that we're that
-we're hitting our api
-url so let's make this a private
-property called api url
-and we're going to set that to http
-localhost port 5000 slash
-tasks okay so that's our url
-now just like we had to when we
-brought in our service into our
-component we had to put it
-remember right here we had to add it to
-our constructor we have to do the same
-thing with the http client
-all right so in our constructor here not
-in the function body but as an
-argument we're going to pass in private
-and we're just going to call this http
-http set that to
-http client like that
-so now we should be able to use this dot
-http
-and then whatever methods that are
-available get
-post and so on all right so now let's go
-down to get tasks
-we're going to keep this here because it
-is going to return
-an observable but we're not going to do
-this actually we can just get rid of
-both lines
-and let's just return
-this dot http and the reason it's http
-is because that's what i called it
-right here i could have called this
-anything but
-we're going to say http and we want to
-make a get request so we're going to say
-dot get
-and just pass in the api url
-now this red line here it's saying
-type observe observable object is not
-assignable to type observable task
-so right after the get here we can just
-put in our angle brackets
-and then specify the task array
-that should get rid of that so if we
-save that
-we should see you know the same exact
-thing except
-it's now coming from our back end
-through an http request rather than just
-being
-imported from a file in fact if we open
-up the
-console here or not the console but the
-dev tools and go to the network tab
-and reload we should see let's see
-right here so tasks so this is the
-request that was made it was a 200
-response everything was okay
-if we look at the response there it is
-okay so we know that we're we're
-interacting with our back end
-we're interacting with our server
-and even if i were to change you know in
-the db.json
-if i wanted to change something like i
-don't know change
-meeting at school to 230 instead of 130
-if i save that
-i do have to reload because remember
-this is the this is our server this is
-our back end
-if i reload you can see that got changed
-to 230.
-so we know that the data is coming from
-the right place now we no longer need
-of because like i said the http client
-returns an observable
-we don't need tasks coming in from mock
-tasks
-we can get rid of that now let's start
-to finish the functionality for our task
-the next thing i want to do is delete so
-we click this now and
-nothing really happens if we go to our
-task item
-and we look at the
-html
-oh we didn't even yeah we didn't even
-add an event onto this yet
-so what we basically want to click this
-and we want to
-call a service method called delete task
-so let's go into this fa icon right here
-and let's add a
-click so when we click this we're going
-to call
-yeah we'll call it on click and save
-that
-and it's just going to give me an error
-because that hasn't actually been
-created yet actually let's call it on
-delete
-i'll call it on delete and then this is
-our task item component so we want to go
-into our task item component
-ts file and we want to define
-on delete because that's going to get
-fired off
-so let's say on delete and just to make
-sure this is working we'll say not this
-let's say console.log 123.
-and let's go ahead and open up i'm
-actually going to put this
-down here and go to our console
-let's see that didn't work click calls
-on delete that's because i forgot
-parentheses and we also want to pass in
-pass the task in as well like that
-and then here
-we have on delete we'll say task and
-let's console log that
-all right so now if i click the first
-one we should see the task down here i
-click the second one we see it down here
-as well
-now as far as interacting with
-the service and calling the delete that
-we're going to create there i don't want
-to do it from the item itself
-i want to have all of the you know all
-the functions that
-have to do with calling the service i
-want that to be in the tasks component
-which is the parent of the task item
-okay remember if we look at the tasks
-component html we have the task item
-embedded there
-so in our task item ts so we have our on
-delete
-we're going to emit we're going to emit
-an event called on delete task so
-remember we did this with the button we
-brought in
-up here it's going to be output
-and event emitter
-and then let's add right here output
-so this needs to be uppercase uh output
-and then this is going to be let's call
-this on
-delete task and this is going to be the
-type of
-event emitter and also
-task which we
-yeah we brought in right here so we're
-using the task interface
-and um we just want to set this to a new
-event emitter
-like that all right so now down here
-instead of console logging tasks we're
-going to say
-this dot and then whatever we called
-that event emitter that on delete
-task and then we just want to call emit
-and then pass
-in that particular task which is being
-passed in here
-all right so now we'll save that and
-remember since we have this
-output this on delete task output we
-have to go to the parent component
-html which is the tasks so right here
-where we're
-embedding the the task item
-and let's put right here actually
-let's go to the end here and we'll say
-on delete task
-when that fires off then we're going to
-call
-delete task
-and that's going to get passed in the
-task
-all right so we'll go ahead and save
-that so whenever that's called
-now it's going to look into the tasks
-component
-and it's going to look for a function or
-method called delete task
-so let's go into tasks component ts
-and then from here we can create delete
-tasks and we can interact with our
-service and we're already bringing the
-service in here right we
-we're using it here in the ng on init
-so let's say delete task
-and that's going to take in task with
-the type of task
-it's just a single object it's not the
-array so we don't need the brackets
-all right and then in here
-we're going to want to call the service
-method which we haven't actually created
-yet
-so let's put a pin in this for now and
-go to our service
-and let's make let's create a function
-here to delete
-okay so we're going to go right under
-get and let's say delete
-task which will take in a task with the
-type of
-task and then this is going to return
-an observable and then we want to put in
-our angle brackets
-with task you technically don't need to
-have like the types here we're using
-typescript you don't have to but it is
-it just makes your application more
-robust and
-it prevents for issues in the future so
-it is good to do
-i know it is a little annoying a lot of
-people love typescript but it does annoy
-a lot of people
-i tend to only use it in larger projects
-and of course in angular because it's
-you know it's already there and already
-all set up
-so let's go ahead and make our request
-now
-in order to delete a task you make a
-delete request to this
-api but you have to have the id like
-task slash id
-so what we'll do is create let's say
-const
-url and we'll set that to a set of
-backticks
-and then a template literal let's say
-this dot api
-url slash and then we want the id which
-we can get from task.id
-okay and then for our request we're
-going to return this
-dot http and instead of get we're saying
-delete
-and the type will be task
-and then we want to pass in that url
-which includes the id
-okay so now we have our delete task here
-and this again this is going to return
-an observable so
-the way that we're going to call this in
-our component here
-is is similar to you know what we did up
-here in fact we could probably just copy
-this
-so instead of get tasks we're going to
-do delete
-tasks and let's
-pass in here that specific task
-um and then what that is going to give
-us back
-actually it's not going to think it's
-going to give us anything back we don't
-need tasks here
-however we do want to get rid of it from
-the ui
-right so what we'll do is filter it out
-so we'll say
-this dot tasks and set it to
-this dot tasks dot
-filter and let's say for each task
-we want where that task dot
-id is not
-equal to the task
-that we deleted so that will filter it
-out from the ui
-and this should not have an s i don't
-know why i put an s
-okay so this right here where
-this delete task subscribe is going to
-call
-this here it's going to delete from the
-server and then
-when it's done it we're going to just
-filter it out from the ui
-okay hopefully that makes sense so
-let's see i want to keep these three
-tasks so
-let's just go into db.json and i'll just
-copy this because you can just add them
-from here as well
-and i'll just say 4 and just call this
-we'll just call this test and that
-should show up
-once i reload okay and then i want to
-delete tests so i'm going to just click
-delete
-and that definitely didn't work right
-it did on the server side but i must
-have messed something up here and i did
-this needs to be not equal
-because we want to filter wait i did oh
-i just didn't have a space in the right
-place
-i don't know what i don't know what the
-hell i just did but it should be
-you know the that particular iteration
-in the filter should not be equal to
-the task id that you're deleting all
-right so let's try that again
-so we'll just make this four doesn't
-really matter
-test okay so now we have our test if i
-click that
-all right so it gets it first gets
-deleted from the server
-and then when that's done you can
-basically think of the subscribe here
-as like a dot then right so then
-we're going to go ahead and filter it
-out from the ui
-okay so we have our delete done the next
-thing i'd like to do which is going to
-be pretty similar in the way that we do
-the events and stuff
-is i want to be able to double click and
-set the reminder value to
-just the opposite if it's true set it to
-false if it's false set it to true
-we also want to have a um i probably
-should have did this earlier but
-we want to have a border here a green
-border
-if there's a reminder set and i believe
-i have a class for that
-in the css the task item css
-yep so i have a class of reminder with a
-border left
-so let's add that first so we'll go to
-our task
-item component html and we want to put
-it on this div right here
-now since it's a conditional like if
-if it's if the reminder is true then we
-want that class to be set
-so we're going to use a directive called
-ng class just like we have ng style we
-have ng class
-and we're going to set that to let's say
-reminder we're going to set the class of
-reminder if the task dot
-reminder is true so we'll save that and
-you can see these two have the green
-line because the reminder is true if we
-look at the
-db.json
-the first two are true if i set the
-second one to false then
-reload you'll see that one is false but
-i'm going to set that back to true
-okay so that takes care of the display
-now again i want to be able to double
-click
-and toggle that so just like we have
-we have the on delete we're going to
-have an on toggle
-however we don't want this to be on on
-the icon we want it to be on the div
-itself
-so this div let's go after the class and
-the event is going to be a double click
-so it's going to be dbl
-click and it's all lower case in angular
-and we're going to set that to let's say
-on toggle and pass in the task
-okay so now it's going to give us an
-error because on toggle is not defined
-so we need to go to our task item
-typescript file here and just like we
-did with the
-delete we're going to kind of do the
-same thing
-we have an output we'll call this on
-let's call it on toggle reminder
-and that's going to be an event emitter
-and then just like we did with the on
-delete
-this is going to be on
-toggle reminder and we're going to emit
-on
-i'm sorry this is what we call this
-on toggle yeah so this will call on
-toggle so
-call on toggle and then the this right
-here is
-on toggle reminder okay so we're going
-to emit that
-and since we're emitting that we have to
-go to the parent component
-html which is tasks
-and just like we did for on delete task
-we're going to say
-let's see so on delete task let's say on
-toggle reminder and then we'll call
-a function called toggle reminder
-oops should be just toggle reminder
-like that okay
-now this toggle reminder we're going to
-set this in our tasks
-component in the ts so down here under
-delete task
-let's put toggle reminder
-which is going to take in a task
-and then we basically just want to take
-the task that's passed in
-we want to take the reminder and we want
-to set it to the opposite of whatever it
-is so just the opposite of
-task reminder and just for now let's
-just console log
-task and we should see that change
-actually we'll log just the reminder
-value
-so now if we go over here and let's open
-up our console and double click
-and we see true double click again false
-and you can see the border gets added as
-well now the problem is
-if i reload it's going to go back to how
-it was because we haven't updated the
-server right we haven't called a service
-method to interact with json server so
-let's go to our service
-task service so underneath
-delete task let's call this update
-task reminder
-which will take in a task and it's going
-to return
-an observable task observable
-and let's uh we can just grab this url
-line right here because it does need to
-have the id specified
-and then let's return this dot http
-and this is going to be a put request
-because we're making an update
-we're going to pass in the url and
-actually it's
-just going to be a task we're going to
-pass in the url we're going to pass in
-the task
-so we're sending data which means we we
-want to send
-some headers with the content type
-now up top here remember i brought in
-this http
-headers we could do this directly in the
-function but i'm also going to be using
-this for the
-post request so i'm just going to put it
-up here i'm going to call this http
-options set that to
-an object and then headers and then set
-that to new
-http headers and then in here we can
-pass in an object with whatever headers
-we want in this case we want
-content type and we want to set that to
-application slash json
-and then we can simply pass that in as a
-third argument down here
-http options
-okay just so we're sending the content
-type
-and then in our toggle reminder here
-instead of just you know console logging
-we're going to let's get rid of that
-we're going to call this dot
-task service dot and then it's called
-update task reminder and we want to
-we want to make sure that we call
-subscribe on that
-and we shouldn't need to do anything
-else
-except pass in the task
-okay so we'll save that and now it
-should stick because it should update
-the server
-so let's just reload this none of these
-are set to
-true let's double click that that's set
-to true now i'm going to reload and it
-stays
-second one double click it stays and you
-should also see it reflect in your
-db.json file so you can see the second
-one is true right now if i double click
-it turns it to false
-all right cool so we're almost there now
-we need to do is have our ad component i
-know we haven't even created that yet
-but at least we can list our tasks we
-can delete them we can toggle them
-so now let's um
-let's try and think of how i want to do
-this i'm going to close everything up
-for now because we need to just create
-our component our ad form so
-kind of clean this up a little bit
-and then we're going to generate a new
-component so down here i'm going to stop
-the json server for a second
-and we're going to generate a component
-and we're going to call this add dash
-task
-okay so that'll create add tasks good
-let's open up the typescript file let's
-open up the html file
-and let's see i'll just run the server
-again
-json server run our back end because if
-the back end's not running it's not
-going to show our tasks
-because that's coming from there all
-right now i want to embed our add
-task into
-we're actually going to embed it into
-the tasks component because the task
-component is going to be
-connected to a route later on and we
-want both the ad
-form and the actual task to show so
-let's go into task
-component html
-and let's go up right above the app
-task item and let's add app add
-task save that we should now see this
-add task works
-okay so we'll close that up and
-let's see i guess
-it's trying to think of where to start
-here if i want to do the html let's
-let's just add the form first the html
-so we'll go to our html here let's get
-rid of this and let's add a form we
-don't want an action
-and we're going to have a class of form
-dash control
-and then we'll have a label
-for this is going to be the text so
-we'll say label for text
-and for the title though we'll say task
-and then let's have an input and this
-will be the type of text we'll give it a
-name
-of text and an id
-of text and a placeholder
-of add task
-and just to see what that looks like
-okay and it's styled nicely because of
+to do this so for example if you want
+people to take a photo and then you want
+something to happen you know if that
+thing happens and you show a result
+people might not really understand that
+something happened in the background so
+it's always a good idea to give them a
+little bit of a feedback so one thing
+you can do again let's say it's about
+uploading a photo or taking a photo
+you can say you can use the success box
+and give them a message for example
+photo
+uploaded
+successfully
+and here now we can see that for shows
+me the photo uploaded successfully of
+course you can uh have a little
+condition here that says show this only
+if the photo is uploaded or a new photo
+is being taken but we'll do that in a
+second but for now as you can see it's
+nice to show something with a little
+green background that tells the user
+that everything went well and sometimes
+you might need to show people that
+something is working in the background
+or maybe like a little progress bar to
+show them hey we're working on this and
+we will get back to you in a second so
+maybe it's after uploading a photo or
+uploading a file maybe if it's too big
+it's taking a little bit of time so what
+you can do is to show this progress bar
+and that is also built in and streamless
+and i i really really like it one really
+easy way to do it let's say i put it in
+the second column again
+i'll call progress component from
+streamlet and at first it's going to be
+zero
+and then inside a for loop
+completed
+i can increase it a little bit so for
+example of course i give this a name
 um
-you know because of the css the global
-css for form control and all that
-then we have the day and time so i'm
-going to copy this whole form control
-down and this is going to be for
-let's say day
-change this to say day
-and time and the input type will be
-text the name will be day
-the id day and then
-we'll say add day and
-time all right good and then the last
-thing or the last input is going to be
-the
-set reminder checkbox so for that let's
-put i guess just copy this
-so in addition to form control there's a
-class
-form control check yeah dash check
-and let's see label
-say reminder
-set reminder
-and the type is going to be a check box
-and the name
-reminder id
-reminder and no placeholder it's a check
-box
-okay let's see what that looks like um
-what
-phone controls it oh i'm missing a
-double quote all right so there's our
-check box good and then the last thing
-is an input
-button so let's say input i'm going to
-give it a type of submit
-and let's see value we'll say save task
-and i'm going to give it a class of btn
-and btn
-block and oh this is really close right
-here i think i had a class
-of like add or something like that let
-me just check the global
-style sheet real quick
-yeah i have this add form with margin
-bottom that can actually go in the
-the style sheet for the component
-because that's not going to be used
-anywhere else so
-right in the css here paste in add form
-and let's add that
-to to the form class
-and dash form okay so that'll push it
-down all right so that looks pretty good
-now when you're working with forms
-you're going to want to put in your
-class in the component class a property
-for each
-field so in our case we have text a text
-field a day field and a reminder
-so let's add those as properties here so
-we'll say
-text which is going to be a string
-day which is a string
-and reminder which is a
-boolean and i'm going to set that to
-false by default because you can set
-default values
-now i want to basically create a two-way
-data binding between the
-the this property and the input
-now in order to do that we need to use a
-directive called ng model however that's
-part of the forms module which isn't set
-up by default
-um so we do have to just go to real
-quick go to
-app dot module ts and we want to bring
-in
-the forms module
-so let's go right under the
-hdp client module and let's import from
-here let's say forms
-module
-and that's going to be from
-angular slash forms
-and then of course we have to just add
-it down here since it's a module it's
-going to go on the imports
-so right here forms module
-so now we have our text and reminder
-properties here so let's go to the form
-now and on the first
-input i'll go right after the name
-and we're going to be using it's it's a
-two-way data binding so we use brackets
-and um because brackets are for input
-right
-like if you are binding something and
-then events are output which are
-parentheses
-this is a two-way data binding so we
-actually use both
-and then the ng model directive and set
-it to
-text because that's the we want to bind
-to this right here to the text
-all right and then we want to do the
-same for the others so let's see i'll
-just copy that
-and i believe your name you have to have
-a name attribute with the same
-value right so this would be day
-and then this would be reminder
-all right
-and if i were to put out like
-let's say i wanted to have under this
-div
-i wanted to output text
-which is just nothing by default if i
-start to type in here you'll see that
-it'll output here so it's a two-way
-binding
-okay just wanted to show you that
-so the next thing we want to do is have
-a submit
-and there's actually if we go to the
-form here
-there's actually a an ng submit
-event that we can use so we can use
-parentheses and then ng
-submit and by doing this we don't have
-to do like
-you usually have to do the event event
-dot
-prevent default to prevent the form from
-submitting we don't have to do that with
-ng submit which is nice
-so we'll set that to a function called
-on submit
-and that doesn't exist so let's go to
-add task and let's create
-on submit
-okay now for on submit we're going to
-want to
-let's just do some quick validation
-remember we can access this stuff up
-here with this dot text this dot day and
-so on
-so i just want to make sure that the
-text is there so i'll say
-if not this dot
-text then let's do an alert
-and we'll say please add a
-task and then we'll return
-all right so if we were to submit this
-without a task we get a little alert
-just some basic validation if it is then
-let's create an object here called new
-task
-and let's set text to this dot
-text we'll set day
-to this dot day and we'll set
-reminder to this dot
-reminder okay so we have this object and
-this is what we want to submit
-to our server through our service
-now we're not going to do that here in
-the add task component we're going to do
-it in the parent component which is task
-just like
-where we did everything else so we're
-going to have to
-emit an event here all right
-i'll do that in a second let's just say
-to do
-emit event
-i just want to clear the form after so
-let's say this dot text set that to just
-an
-empty string and we'll do the same with
-this dot day and then the reminder i
-want to set that
-to false
-okay so if i were to submit it's not
-going to do anything but it should clear
-so now to emit the event remember we
-have to bring in up here let's bring in
-output and the event emitter
-and then let's set
-actually put this up above here let's
-set the
-output and we'll call this
-on add task
-and this is going to be an event
-emitter task
-and we'll set that equal to a new event
-emitter
-okay and then down here we can emit it
-what's this
-did i not bring in no i didn't bring in
-the interface of tasks so let's import
-task from dot dot slash dot dot slash
-task and then
-right here let's emit it so we'll say
-this
-dot on add task
-dot emit and we want to emit it with the
-new task which is
-this object that we created based on the
-form inputs
-all right so now since we have this on
-add task emitting we have to go to the
-parent component which is
-tasks go to the html just like we did
-with like the delete and all that
-grab that and let's go ahead and
-paste that in and change this to on
-add task and then we'll call a function
-oops we'll call a function called add
-task now
-this doesn't exist we were able to use
-task here because of our
-ng4 because of our loop we had access to
-the task
-but what we can do is just pass in money
-sign event
-and we should be able to then get the
-task through that
-now it's just telling us add task does
-not exist on the task component so let's
-go to the ts file
-and from here let's put this down below
-add task
-and let's just make sure that works so
-i'll just console log
-task for now and then we'll open up our
-console and i should be able to just
-type some
-crap in here and save and you'll see
-that it'll log
-okay so obviously we wanted to do more
-than log we want it to get added
-to our our back end so we need to make a
-request
-through our service just like we did
-with these other things
-so let's go to our service now see are
-we done here
-i think we're done with the html here
-and done with that so let's go to our
-service our task service and the last
-thing we want to do here
-is add task
-okay and then this is going to return an
-observable
-task
-okay and let's from here we're just
-going to return
-this dot http and we're going to make a
-post request
-and we want to pass in here the api url
-we want to pass in the task
-and we also want to pass in the http
-options which has
-the header okay because we are
-submitting data
-and that will return an observable so
-let's go back to the task component
-where we have
-our add task and
-let's uh we could probably just copy
-this
-so we'll say this task service and we
-want to call add
-task pass in that specific task
-and then we'll get back a single task
-so just make that singular and then what
-we want to do is not
-this but we want to set
-let's say this dot task and then we want
-to push
-on to that um the task that we get back
-so let's go ahead and try this out i'll
-just say test
-task and i don't know maybe
-seventh set reminder and save
-okay so it gets added good let's reload
-and it's still there meaning that it
-communicated with the server
-made the request good if i double click
-i can toggle it
-i can delete it all right so we now have
-we basically have crud create read
-update and delete i know the update is
-only the
-reminder like we don't have the ability
-to change the
-title or the text or the day you can add
-that if you want
-this is getting way longer than i
-thought it would be but we need to
-finish up by adding functionality to
-this button right here i don't want this
-to show by default
-i want just the task to show and then
-you click add then this shows
-then this turns into a close button so
-you can close it and just toggle this
-so we need to do that and then we're
-also going to i'm going to show you how
-to implement routing as well which is
-pretty easy
-so let's handle the toggle i'm going to
-just close up all of this
-and just collapse
-the stuff here now
-let's think about what we have to do
-here we have to be able to click this
-button
-and make this component
-not show right if we click it again then
-it'll show
-not only that but i want the button to
-change i want this to turn red
-and have the text close now
-since we want this to we want something
-to happen in multiple components
-instead of just passing things around
-you know passing
-basically like in react it's called prop
-drilling
-where instead of doing that we're going
-to create a ui service
-with a property called show add task
-meaning show this add task component
-that'll be a boolean and we're going to
-set up something called a subject
-which is a certain type of observable
-actually let me bring this article over
-real quick
-just to show you a use case for subjects
-so where is it
-we'll get into more detail later but for
-now it's enough to know that a subject
-involves taking the notifications from a
-single source
-observable and forwarding them to
-one or more destination observers so
-basically we want a subject
-when we click this and we want to track
-it both
-here in the button or in the header
-rather and then also
-in the in the add task component
-so let's create a new service right now
-we just have our task service
-i'm going to stop jason's server for a
-second here and let's do
-let's see i should have my other gen
-yeah so ng
-generate service and then services and
-we'll call this ui
-okay we'll go ahead and start our server
-backup
-and let's open up our ui service
-so we're going to bring in say import
-we're going to bring in observable and
-then
-subject and we're going to bring that in
-from rxjs
-and then let's go down into our service
-class
-and basically we're going to define
-let's see
-private show ad
-task which is going to represent if it's
-shown or not
-so that's going to be a boolean
-and we're going to set that to false by
-default
-and then we want to define a subject so
-we'll say private
-subject set that to a new
-subject this is all in the documentation
-and we're going to use any for the type
-and then what we want to do is create
-we want to create a function to toggle
+progress bar
+and then i will include increase this
+incrementally if you don't want it to
+happen really fast of course you can
+also add some sleeping time in here
+just need to call
+the time
+module and yeah this will work so it
+will basically look like it's slowly
+being uploaded so let's see how that
+looks
+oh i forgot to give sleep some
+um
+let's say 0.5 let's not wait too long
+oh turns out that this is taking a long
+0.05 maybe
+i'll rerun this and yeah as you can see
+now we have a nice little smooth uh
+progress bar and once it's done it will
+give me a
+success message
+the next thing that i really like is how
+you can show some of the metrics on
+stream with applications they have a
+really nice little neat way of showing
+them for example if i want to add this
+to column three
+we'll just call metric
+i need to give it a label let's say i
+want to show the temperature
+and the value of it is
+60
+degrees celsius
+and let's say there's also a delta to it
+a change to it and that is
+three degrees celsius so
+let's see how nice that looks if we
+rerun this
+yeah as you can see it is very nice then
+we can show the delta in a neat way and
+if it's positive it shows as green if
+it's negative it shows us
+uh
+red so that's a nice way of showing
+things without you having to um
+format everything from scratch having
+this a little bit bigger having this a
+bit smaller have a different color or
+add a little icon here so that's quite
+neat another thing that i really enjoy
+is expanders in streamlight because it
+really saves from time
+a lot you don't if you have a lot of
+text you don't have to show the text in
+one place you can just divide it into
+expanders and people can
+click them if they want to read more
+about a certain topic so i'll just add
 that
-value this this show add task so let's
-say
-toggle add
-task and this isn't going to return
-anything so
-i'm going to set this to void
-and then we're just going to say this
-dot show add task meaning that value we
-set above which is false by default
-and set it to whatever the opposite so
-not this
-dot show add task and
-then we want to take this dot subject
-and there's a method called next and
-then we can pass in the value
-which is going to be whatever the
-current show add task
-if it gets set to true it'll true we'll
-get passed in if it's false false will
-get passed in
-now the other method that we want is
-basically going to fire off when we
-toggle
-right so we're going to call this on
-toggle
-and this is going to be an observable
-and for the type we'll say any
-and then we want to return from this
-this dot
-subject and return as observable
-and that's it that should be it for our
-service so basically we want to call
-this
-when we actually click it and then
-wherever we want to do something when
-that happens
-we want to subscribe to on toggle
-okay so keep that in mind now let's go
-to
-let's see so just to refresh my memory a
-little bit we have our button
-when we click it we call on click and if
-we look in the button
-here we're emitting button click from
-the component
-which then is in the header right so in
-the header ts
-okay we didn't add button click yet but
-if we look at the html yeah button click
-oh yeah we called toggle ad class
-okay so toggle add class is what's being
-fired off and right now
-yeah so it's just it's just console
-logging
-so in this in this header component this
-is where we're going to bring in our ui
-service so let's say import
-ui service
-from and it's going to be up two levels
-in services slash
-ui.service and then we're gonna we also
-want to bring in
-from rxjs something called subscription
-so let's import
-subscription from
-rxjs
-and let's see so we have our title
-let's add let's add a value of show add
-task which is going to be a boolean
-and let's have our subscription which is
-going to be
-subscription now remember in order to
-use a service you have to add it to your
-constructor so in here
-we're going to say private and we'll
-call this
-lowercase ui service
-and then uppercase ui service which is
-what we brought in
-so now we should be able to say this dot
-ui service dot
-and then any methods that are in there
-what is that
-all right now in the toggle add task
-instead of this
-let's say this dot ui service
-and then toggle add task
-okay so basically when we click that
-we're calling in our service we're
-calling this right here
-okay if i click it i mean we're not
-responding to it but this should be
-getting called in fact if i just
-console.log like one two three
-and i click it we should see that one
-two three
-now we wanna handle you know whatever we
-want to happen
-when we actually click that and one of
-the things we want to happen
-is change this show add task value right
-here
-okay this is just a you know a local
-property to this class or to this
-component
-but i do want to change it so that i can
-then change the text and the color
-that that is going into the button
-right here instead of just having green
-actually you know what let's add it
-i'm going to wrap this in
-actually can i do
-i think i can do this so like show add
-task
-if that's true then i'm going to want
-this to be
-red right so let's say
-red else then i want this to be green
-and i think i need quotes around that
-i hope that didn't work
-uh let's see what oh i have you need
-double
-curly braces too many switching of
-frameworks
-so now if i click this
-nothing's going to happen
-nothing's going to happen just yet but
-if i
-set this show add task manually if i set
-it to
-true you'll see that turns red
-alright not only do i want it to turn
-red but i want the text to be different
-so
-let's actually just copy this and for
-the text
-if it's shown then i want it to say
-close and if it's not then i want it to
-say add
-okay so now you'll see it's red and it
-says close if i change this
-to false okay now we could of course
-just change that in here
-but we we want to to also catch that
+separately
+i will say width streamlit
+expender and the nice thing is it's very
+neatly organized that's what i like so
+you put the title of the expander here
+inside the expander component so you can
+say click to read
+more for example
+and then you can add whatever you want
+in there
+that's the nice thing
+uh what should i say
+hello here are more
+details on this topic
+that
+you were
+interested
+in you can add other things you can add
+lists or you can even add some of the
+images so we can put the image that
+we've just
+taken for example
+camera
+photo oops
+but that might give me an error
+but maybe we can say
+if
+uploaded
+photo
+is none
+then we show the camera photo
+so we'll see the user will do one thing
+else
+will show
+the other photo
+the uploaded photo this is assuming i
+haven't written that in but this is
+assuming that you know we have uh one
+photo or the other photo uploaded
+already so let's see how that looks
+all right click to read more and then it
+opens up and then we can read more and
+then we also have our nice little image
+here and the last thing that i really
+enjoy with streamlet is the session
+states and the callback function so
+that's why i wasn't sure if it was nine
+or ten if you call if you think of them
+as one thing it's nine but if it goes
+about separate things and it's ten
+basically session states and callback
+functions makes streamline applications
+much much much better much easier to use
+and opens up so many possibilities for
+us so for example if i want to keep
+track of if a photo has been uploaded or
+not
+what i can do is to have
+a
+photo
+session state basically so i'll say the
+photo
+not in streamlet
+session stage
+streamlight session
+state
+photo and at first this is how it's
+going to be initialized
+of course it's going to be
+let's say
+not done
+and what i can do is to have a callback
+function and inside this function i'm
+going to change the session state
+when a photo is either uploaded or a
+photo has been taken so i will say
 change
-in the ad component itself so we can
-display and not display this
-so what we'll do is once this is fired
-off this
-toggle add task in our service
-if we want to basically watch that we
-need to use the subscription that we
-brought in
-and that's going to happen in the
-constructor in the body
-so in the constructor let's say this dot
-subscription so we're just setting up a
-subscription to the toggle
-so this set that to this
-dot ui service
-ui service dot
-i think on toggle is that what i called
-it so in the ui service yeah right here
-so we want to call that on toggle
-so on toggle
-and that's going to be an observable so
-just like with our other observables
-we're going to call subscribe
-and we're going to get a value back and
-that's going to be either the true or
-false
-okay and this is going to be an arrow
-function and then we'll say
-this dot show add
-task we're going to set it to whatever
-that value is
-okay and remember that value is just
-going to be the opposite of
-whatever show add task is in here it's
-false by default
-it changes to true it's passed in here
-and this dot subject
-next and then we're catching it here
-so true or false and then we're setting
-this component or this class property to
-whatever that is
-all right so let's click it and you can
-see now we're toggling the button
-okay so we essentially want to do this
-same thing
-in the add component as well so we can
-show or not show
-the form so let's do that let's go
-to we can close that up
-close the service up the header up and
-let's go into add
-tasks okay we're going to go into
-here and we want to bring in the ui
-service here as well
-so we want to import ui service
-from
-services slash ui
-service and to use that we have to pass
-it into the constructor so
-private
-ui service
-all right and then just like we did with
-the other component with the header
-we're going to have
-a show add task
-which is going to be a boolean
-and let's see we're going to basically
-just
-do the same thing that we did
-in the other component actually just
-copy it so from the header
-in the constructor what we did right
-here let's grab
-that paste that in so now any
-uh oh we have to do the subscription as
-well
-so let's make sure we import
-a subscription
-from that's going to be from rxjs
-let's set
-a subscription and set that
-subscription okay so those steps that i
-just did are basically what you're going
-to want to do if you wanted anything
-else in
-any other component to respond to this
-click right here to that toggle
-okay if you want anything to to respond
-to that
-and then when that happens this show add
-task is going to be set to whatever
-you know whatever it's set to through
-the service
-so now to deal with that let's go to
-the html for the add task component
-and we just want to show it if um
-you know if it's true and not show it if
-it's false so we can use an ng if
-and if you want to use an ng if just on
-a regular element like this use
-asterisk ng if and we'll set that to
-show ad task
-okay so now it's not shown if i click
-add
-not only does the button change but it
-also now
-displays the form and i can toggle that
-so
-i didn't have to like pass around uh
-values or pass around events or anything
-we just have a service
-a ui service that we could definitely
-put other stuff in here
-if we had a you know if we added stuff
-to the ui and we wanted to respond
-to specific events and multiple
-components we could put it in here
-all right so now that we can do that we
-can add i think the only thing really
-left to do
-is to implement the router
-and just to make sure this still works i
-don't know why it wouldn't but we'll go
-ahead and try it
-okay double click delete all right so
-all this stuff seems to work we can't
-add it without a title
-close so now for the router let's close
-both of these up
-okay now at the beginning you remember
-when we used the cli it asked us if we
-wanted to use the router so normally i
-would have said yes most likely
-but i wanted to show you how to just
-build just you know the single ui here
-with no other routes or anything
-and then show you how to implement it
-manually which which isn't
-hard at all really we just need to go to
-our app.module
-which is right here
-okay and we want to bring in the router
-module and then we can
-set up our routes and what we'll do is
-we'll create a footer component that has
-a link to an about page
-or an about route so let's go
-under the forms module and let's import
-from here
-and this stuff i'm doing right now would
-happen
-automatically if you chose yes in the
-beginning so we're going to bring in
-router module
-and routes and that's going to be from
-angular slash router
-and then we have to add actually let's
-create our routes first
-so we'll go right above ng module here
-and say const app routes
-and we're going to set that's going to
-have a type of routes
-and then we're going to set that to an
-array with
-objects with a path now for the home
-page you're going to just have a just an
-empty string
-so for the or the index i should say the
-index route
-and then i want to i want to connect
-that to
-the component of tasks
-component which has both the ad form and
-the list of tasks right
-and then i guess that's all i'll do for
-now
-and then we want to go down
-to the imports and after the forms
-module we want to add
-router module but we also want to do
-this
-dot for root and
-inside here we pass in our app routes
-and you can put your app routes in a
-separate file as well if you'd like
-and if you want to debug you could add
-you could add some options here and you
-could do like enable tracing
-and set that to true that can help you
-debug your routes
-now in order for your you know whatever
-route you're on for that component to
-show you just want to go to your main
-app component to the html
-and instead of like app
-tasks what we want to put here is our
-router
-dash outlet like that
-if i save that i should see the same
-thing because our tasks
-component is our home page right
-now if i create another route or i
-should say let's create another
-component
-called about so i'm going to just
-stop this for a second and let's
-generate a new component
-called about and you could put this in
-like a subfolder called pages if you
-wanted to because it's kind of like a
-page
-but let's create that
-and we'll run the server again
-and then let's go into about and let's
-go into the about html
-and this is i mean you can put whatever
-you want here but i'm just going to have
-a div
-with an h4 actually let's put an
-h2 let's put an h2
-here and task
-tracker
-version
-and then i want a link to go back now
-with the angular router
-what you do is it's an a tag but you
-don't want to use href because that'll
-refresh the page like a regular link
-you want to use router link like this
-so a router link and this is going to go
-to slash and we'll just say go
-back all right so that's our about
-component
-now what we want to do is go back into
-app module above component should have
-been
-already brought in because we you know
-we use the cli
-but we want to add it to the routes so
-we have our first route here
-now let's just copy this down and let's
-set this to
-the about component and this is going to
-be about
-if i save that now and i go to my url
-bar here
-and to slash about
-it shows me the about page
-okay and it still shows the header and
-all that because
-if we look in our main app component you
-know we have our container we have our
-header
-and then any whatever the specific route
-is is going to output here
-now i do want a footer component as well
-that has a link to that about page so
-let's
-generate that real quick
-and let's see so footer i think i have a
-little bit of css for this
-yeah we're just going to put some margin
-text align center
-and then for the html for the footer
-let's just do this so just a copyright
-and then a link to the about page
-and then we want to embed that in our
-main app component
-so that'll be app dash footer
-okay so now we have a footer that takes
-us to the about page and we can go back
-so now
-we're switching between routes
-all right now one one last thing
-if i go to the about page i don't want
-the button to show up here this
-this is stupid there's no point in
-having this here
-so let's limit that to um
-we'll limit the button to the home page
-so to do that let's go
-to our header
-okay so the button the app button is
-being displayed right here
-i'm trying to think of yes so in order
-to in order to do this we need to
-bring in the router so in our header
-ts let's go
-up here and let's import because we just
-need to figure out what route we're on
-and we can do that with the
-router so that's going to be from
-angular slash router
-and since we brought that in here we
-have to
-bring it in here as a provider into our
-constructors so we just want to put a
-comma here you can put as many
-providers as you want and let's say
-private
-router lower case set that to router
-uppercase and then we should have access
-to
-this dot router which has a url property
-so i'm going to create a function here
-that says has
-call it has route
-and that's going to take in
-a route which will be a string
-and all i want to do here is just return
-and say this dot router dot url
-if that is equal to route so that'll be
-a true or false value
-okay and then we're going to go into the
-header component html
-and where we have our app button let's
-add an ng if on to this
-so ng if and we're just going to set
-that
-to has row and the route
-is just slash because it's the index so
-basically we only want to show this on
-the index page
-which is our tasks page right because
-that's the route we set it to
-so let's reload this and let's hit about
-and now you'll see that that button does
-not show here and it won't show on any
-route
-except for the index route which is this
-tasks page
-okay so that's it
-now if you're coming from react
-or view you might notice that this is
-more difficult right it's just i think
-it's pretty objective i don't
-really think it's it's just an opinion
-that angular is harder than those
-other two frameworks uh and that's
-because there's just more to it it's
-it's more strict um and it's just more
-robust and i think that
-that's a big reason why it's so popular
-in the big business world
-if you're if you have a startup or your
-own project or you're freelancing
-angular might not be the best choice i
-mean for me my favorite
-framework is react followed by view
-followed by angular
-but i don't build a lot of really large
-scale applications if i was
-then i would probably look at angular
-because there's just
-so much to it and things are just so so
-much more
-strict um you know and organized i guess
-than with react or vue where you can do
-things just pretty much any way you'd
-like
-angular has a very specific way of doing
-things
-but with that said it is it is a great
-framework
-it's just has a bit of a learning curve
-and obviously this this is the longest
-it's the same exact application that i
-built in react and view and it took
-at least a half hour maybe 45 minutes
-longer than those videos did
-but hopefully you enjoyed it guys and
-hopefully it was understandable again
-refer to the documentation for anything
-you didn't understand
-and that's it i will see you next time
+photo
+state
+and then in here i'm going to change the
+state
+to done
+and to
+have this any effect
+have this have any effect i need to call
+on change so if something happens here
+i will call change for the state
+callback function
+here
+and here
+and then i can also say you know we've
+been showing the progress and the
+percentage completed everything
+everything so maybe i can say if
+not this
+streamlination state
+is done then do all of these things if
+not then don't do anything
+so let's see how that's going to look
+all right i'll rerun my application
+all right so right now nothing is
+happening it just says welcome to my app
+here's some info on the app whatever we
+can add whatever we want there if i
+upload something
+um
+let's say
+one of my photos
+it will break because i accidentally
+called
+strings here and not the
+function name sorry let's
+start this again
+as i said nothing is happening now i
+will just upload a photo here
+and then we see the progress bar
+and then it will show me a success
+message
+and we will also be able to see the
+temperature
+then we see this here and then we see
+the uploaded image so
+yeah that's how session states and
+callback functions help us
+and yeah this has been 9 or 10 depends
+on how you look at it
+of my favorite stream with components i
+hope this helped to give you some of the
+inspiration that i've got with
+streamless they have so many different
+types of components so many things you
+can do with them
+and it would really depend on the kind
+of project that you're working on but
+i've also found that the components
+themselves sometimes give me inspiration
+for a whole new
+project that you can make a interactive
+web application on
+so i hope you liked it if you have any
+questions about any of the components
+let me know or if you want to learn more
+about the components that i talked about
+here again let me know i can make a
+video separately
+on them in the future have a great day
+for now and i will see you in the next
+video
+[Music]
+[Music]
+you
