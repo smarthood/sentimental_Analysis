@@ -34,6 +34,9 @@ if __name__ == "__main__":
             progress_bar.progress(i+1)
         progress_bar.empty()
         sentimental = blob.sentiment.polarity
+        if sentimental < 10:
+            sentimental = -sentimental
         perc = str(round(sentimental/1 * 100))+"%"
         st.metric("sentimental value", str(sentimental), perc)
+        st.image('nutral.png')
         print(sentimental)
