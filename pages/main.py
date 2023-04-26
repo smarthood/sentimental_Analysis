@@ -12,6 +12,7 @@ st.set_page_config(
     page_icon="🤖",
     initial_sidebar_state="collapsed"
 )
+st.image('url.png')
 url = st.text_input('Enter video url', '')
 if st.button('SUBMIT'):
     if 'youtube.com' not in url:
